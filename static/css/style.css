@@ -1,0 +1,1253 @@
+/* Variáveis CSS */
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #06b6d4;
+    --accent-color: #f59e0b;
+    --dark-bg: #0f0f23;
+    --darker-bg: #0a0a1a;
+    --glass-background: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    --neon-glow: 0 0 30px rgba(99, 102, 241, 0.4);
+    --neon-glow-hover: 0 0 40px rgba(99, 102, 241, 0.6);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Background Premium com partículas animadas */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    animation: backgroundPulse 8s ease-in-out infinite alternate;
+}
+
+/* Partículas flutuantes */
+.background-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+    animation: particles 20s linear infinite;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.05) rotate(1deg); opacity: 0.9; }
+}
+
+@keyframes particles {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Glassmorphism Premium Card */
+.glass-card {
+    background: var(--glass-background);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Borda superior gradiente animada */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 33%, 
+        var(--info-color) 66%, 
+        var(--primary-color) 100%);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+/* Reflexo interno */
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        transparent 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        var(--glass-shadow),
+        var(--neon-glow-hover);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.glass-card:hover::after {
+    opacity: 1;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 200% 0%; }
+}
+
+/* Header Premium */
+.header-card {
+    padding: 3rem 2.5rem;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, 
+        rgba(99, 102, 241, 0.1) 0%, 
+        rgba(139, 92, 246, 0.1) 100%);
+    position: relative;
+}
+
+.header-card::before {
+    background: linear-gradient(90deg, 
+        #6366f1 0%, 
+        #8b5cf6 25%, 
+        #06b6d4 50%, 
+        #10b981 75%, 
+        #f59e0b 100%);
+}
+
+.header-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    position: relative;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3)); }
+    100% { filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5)); }
+}
+
+.header-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-top: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.crypto-icon-large {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #f7931a 0%, #ffb84d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: iconFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(247, 147, 26, 0.4));
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Summary Cards Premium */
+.summary-card {
+    padding: 2rem;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.summary-card:hover::before {
+    opacity: 1;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.summary-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.summary-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.summary-card:hover .summary-icon::before {
+    transform: translateX(100%);
+}
+
+.bg-primary-glass { 
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+}
+.bg-success-glass { 
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(5, 150, 105, 0.3) 100%);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+.bg-danger-glass { 
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(220, 38, 38, 0.3) 100%);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+.bg-info-glass { 
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(8, 145, 178, 0.3) 100%);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+/* Indicadores de Mudança Premium */
+.crypto-change {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+.crypto-change::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.crypto-change:hover::before {
+    left: 100%;
+}
+
+.crypto-change.positive {
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.2) 0%, 
+        rgba(5, 150, 105, 0.3) 100%);
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.crypto-change.negative {
+    background: linear-gradient(135deg, 
+        rgba(239, 68, 68, 0.2) 0%, 
+        rgba(220, 38, 38, 0.3) 100%);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+.crypto-change i {
+    font-size: 0.9rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Estatísticas Premium */
+.crypto-stats {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.02) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.crypto-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.crypto-stat:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+}
+
+.crypto-stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.crypto-stat-value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: right;
+}
+.crypto-card {
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.1) 100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.crypto-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--crypto-color, var(--primary-color)) 0%, 
+        transparent 100%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.crypto-card:hover::after {
+    height: 6px;
+    opacity: 1;
+    box-shadow: 0 0 20px var(--crypto-color, var(--primary-color));
+}
+
+/* Efeito de partículas no hover */
+.crypto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        rgba(255, 255, 255, 0.05) 0%, 
+        transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.crypto-card:hover::before {
+    opacity: 1;
+}
+
+.crypto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.crypto-symbol {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    font-family: 'Orbitron', monospace;
+    letter-spacing: -1px;
+}
+
+.crypto-name {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.crypto-price {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 1.5rem 0;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    line-height: 1.2;
+}
+
+.crypto-change {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.crypto-change.positive {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.crypto-change.negative {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.crypto-stats {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.crypto-stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.crypto-stat-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.crypto-stat-value {
+    color: white;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+/* Mini Charts Premium */
+.mini-chart-container {
+    height: 100px;
+    margin: 2rem 0;
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.02) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.mini-chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.02) 50%, 
+        transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.mini-chart {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+}
+
+/* Main Chart Premium */
+.chart-card {
+    padding: 2.5rem;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.08) 100%);
+}
+
+#main-chart {
+    max-height: 450px;
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.2));
+}
+
+/* Buttons Premium */
+.btn-glass {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.15) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-glass:hover::before {
+    left: 100%;
+}
+
+.btn-glass:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.25) 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-glass.active {
+    background: linear-gradient(135deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 100%);
+    border-color: var(--primary-color);
+    box-shadow: var(--neon-glow);
+    color: white;
+}
+
+.btn-glass.active:hover {
+    box-shadow: var(--neon-glow-hover);
+    transform: translateY(-3px);
+}
+
+/* Badges Premium */
+.badge {
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Loading Overlay Premium */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(15, 15, 35, 0.95) 0%, 
+        rgba(10, 10, 26, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    text-align: center;
+    position: relative;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--primary-color);
+    border-right: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+.spinner::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, 
+        transparent, 
+        var(--primary-color), 
+        var(--secondary-color), 
+        var(--info-color), 
+        transparent);
+    animation: spin 2s linear infinite reverse;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Status Indicators */
+.pulse {
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+        box-shadow: 0 0 10px currentColor;
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.1);
+        box-shadow: 0 0 20px currentColor;
+    }
+}
+
+/* Utility Classes Premium */
+.text-light-50 { color: rgba(255, 255, 255, 0.5); }
+.text-light-70 { color: rgba(255, 255, 255, 0.7); }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+/* Scrollbar Premium */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 100%);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, 
+        var(--secondary-color) 0%, 
+        var(--primary-color) 100%);
+}
+
+/* Advanced Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Effects Premium */
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px) scale(1.02);
+    filter: brightness(1.1);
+}
+
+.hover-glow {
+    transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4));
+}
+
+/* Neon Effects */
+.neon-border {
+    box-shadow: 
+        0 0 10px var(--crypto-color, var(--primary-color)),
+        0 0 20px var(--crypto-color, var(--primary-color)),
+        0 0 30px var(--crypto-color, var(--primary-color));
+    animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    0% { 
+        box-shadow: 
+            0 0 5px var(--crypto-color, var(--primary-color)),
+            0 0 10px var(--crypto-color, var(--primary-color)),
+            0 0 15px var(--crypto-color, var(--primary-color));
+    }
+    100% { 
+        box-shadow: 
+            0 0 10px var(--crypto-color, var(--primary-color)),
+            0 0 20px var(--crypto-color, var(--primary-color)),
+            0 0 30px var(--crypto-color, var(--primary-color));
+    }
+}
+
+/* Responsive Design Premium */
+@media (max-width: 1200px) {
+    .header-title {
+        font-size: 3.5rem;
+    }
+    
+    .crypto-card {
+        min-height: 350px;
+        padding: 2rem;
+    }
+    
+    .summary-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-title {
+        font-size: 3rem;
+    }
+    
+    .header-card {
+        padding: 2rem;
+    }
+    
+    .crypto-symbol {
+        font-size: 2.4rem;
+    }
+    
+    .crypto-price {
+        font-size: 2rem;
+    }
+    
+    .summary-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2.5rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1rem;
+    }
+    
+    .crypto-card {
+        padding: 1.5rem;
+        min-height: auto;
+        margin-bottom: 1.5rem;
+    }
+    
+    .crypto-symbol {
+        font-size: 2rem;
+    }
+    
+    .crypto-price {
+        font-size: 1.8rem;
+    }
+    
+    .summary-card {
+        padding: 1.25rem;
+    }
+    
+    .summary-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .chart-card {
+        padding: 1.5rem;
+    }
+    
+    #main-chart {
+        max-height: 300px;
+    }
+    
+    .mini-chart-container {
+        height: 80px;
+        margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .header-card {
+        padding: 1.5rem;
+    }
+    
+    .crypto-icon-large {
+        font-size: 2.5rem;
+    }
+    
+    .crypto-symbol {
+        font-size: 1.8rem;
+    }
+    
+    .crypto-price {
+        font-size: 1.6rem;
+    }
+    
+    .crypto-change {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .summary-card {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .summary-icon {
+        margin: 0 auto 0.5rem;
+    }
+    
+    .btn-glass {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .header-title {
+        font-size: 1.8rem;
+    }
+    
+    .crypto-card {
+        padding: 1rem;
+    }
+    
+    .crypto-stats {
+        padding: 1rem;
+    }
+    
+    .chart-card {
+        padding: 1rem;
+    }
+}
+
+/* Dark Mode Enhanced */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --glass-background: rgba(255, 255, 255, 0.06);
+        --glass-border: rgba(255, 255, 255, 0.12);
+        --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* High Performance Mode */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .background-animation {
+        animation: none;
+    }
+    
+    .spinner {
+        animation: none;
+        border: 4px solid var(--primary-color);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .glass-card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .background-animation,
+    .loading-overlay {
+        display: none !important;
+    }
+}
+
+/* Animações premium adicionais para interações */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-40px) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes rippleEffect {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes clickParticle {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--angle-x), var(--angle-y)) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes cardHover {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(99, 102, 241, 0.2);
+    }
+}
+
+@keyframes priceUpdate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes chartPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes dataRefresh {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Efeitos especiais premium */
+.crypto-card.price-changed {
+    animation: priceUpdate 0.8s ease-out;
+}
+
+.crypto-card:hover {
+    animation: cardHover 2s ease-in-out infinite;
+    transform: translateY(-5px) scale(1.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-container.updating {
+    animation: chartPulse 1s ease-in-out;
+}
+
+.price-up {
+    color: var(--success-color) !important;
+    animation: priceUpdate 0.8s ease-out;
+    text-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+.price-down {
+    color: var(--danger-color) !important;
+    animation: priceUpdate 0.8s ease-out;
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+/* Notificações premium */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    max-width: 400px;
+}
+
+.notification {
+    margin-bottom: 12px;
+    border-radius: 16px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+}
+
+.notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+.notification:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 16px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Status indicators premium */
+.status-indicator {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-indicator.online {
+    background: var(--success-color);
+    animation: statusPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.status-indicator.updating {
+    background: var(--warning-color);
+    animation: dataRefresh 1s linear infinite;
+}
+
+.status-indicator.offline {
+    background: var(--danger-color);
+    opacity: 0.5;
+}
+
+/* Efeitos de loading premium */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 8px;
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Otimizações de performance */
+.crypto-card,
+.glass-card,
+.btn-premium {
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
